@@ -25,9 +25,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 BUILD_FINGERPRINT := realme/RMX3930/RE6054:16/BP2A.250605.031.A3/U.R4T2.1783691494:user/release-keys
 PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)/prebuilt
 
-PRODUCT_PACKAGES += \
-    android.security.apc-ndk_platform \
-    libkeystore2_apc_compat
 
 PRODUCT_PACKAGES += \
     android.security.apc-ndk_platform \
