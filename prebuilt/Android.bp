@@ -1,4 +1,3 @@
-cat > prebuilt/Android.bp <<'EOF'
 cc_prebuilt_library_shared {
     name: "android.security.apc-ndk_platform",
     arch: {
@@ -24,4 +23,3 @@ cc_prebuilt_library_shared {
         none: true,
     },
 }
-EOF
