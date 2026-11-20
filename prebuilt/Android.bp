@@ -5,7 +5,8 @@ cc_prebuilt_library_shared {
             srcs: ["lib64/android.security.apc-ndk.so"],
         },
     },
-    vendor: true,
+    vendor_available: true,
+    system_ext_specific: true,
     strip: {
         none: true,
     },
@@ -18,7 +19,8 @@ cc_prebuilt_library_shared {
             srcs: ["lib64/libkeystore2_apc_compat.so"],
         },
     },
-    vendor: true,
+    vendor_available: true,
+    system_ext_specific: true,
     strip: {
         none: true,
     },
