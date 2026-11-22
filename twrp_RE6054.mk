@@ -28,4 +28,3 @@ PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)/prebuilt
 
 PRODUCT_PACKAGES += \
     android.security.apc-ndk_platform \
-    libkeystore2_apc_compat
