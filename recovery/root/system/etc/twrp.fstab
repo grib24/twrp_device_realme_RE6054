@@ -33,10 +33,10 @@
 /system_dlkm         erofs     system_dlkm                          flags=display=system_dlkm;logical;slotselect
 /metadata            f2fs      /dev/block/by-name/metadata          flags=display=metadata
 /metadata            ext4      /dev/block/by-name/metadata          flags=display=metadata
-/data                f2fs      /dev/block/by-name/userdata          flags=display=data
+/data                f2fs      /dev/block/by-name/userdata          flags=display=data;fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized;keydirectory=/metadata/vold/metadata_encryption
 /cache               f2fs      /dev/block/by-name/cache             flags=display=cache
 /cache               ext4      /dev/block/by-name/cache             flags=display=cache
 /mnt/vendor          ext4      /dev/block/by-name/prodnv            flags=display=vendor
-/storage/sdcard0     vfat      /dev/block/mmcblk1p1                 flags=display=sdcard0
+/external_sd         vfat      /dev/block/mmcblk1p1                 flags=display="MicroSD";storage;wipeingui;removable
 /vendor_boot         emmc      /dev/block/by-name/vendor_boot   flags=slotselect;backup=1;flashimg=1;display=Vendor Boot
 /super               emmc      /dev/block/by-name/super             flags=display=super;backup=1;flashimg=1

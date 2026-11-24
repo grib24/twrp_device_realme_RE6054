@@ -1,17 +1,9 @@
-#
-# Copyright (C) 2026 The Android Open Source Project
-# Copyright (C) 2026 SebaUbuntu's TWRP device tree generator
-#
-# SPDX-License-Identifier: Apache-2.0
-#
-
 LOCAL_PATH := device/realme/RE6054
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_VIRTUAL_AB_OTA := true
 PRODUCT_SHIPPING_API_LEVEL := 33
 
-# Retain the factory payload required before dynamic partitions are mounted.
 SPRD_VENDOR_RAMDISK_FILES := \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,vendor_ramdisk)
 
