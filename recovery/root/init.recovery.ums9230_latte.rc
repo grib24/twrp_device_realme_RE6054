@@ -1,0 +1,82 @@
+on init
+    setprop crypto.ready 1
+
+on fs
+    wait /dev/block/by-name/metadata
+    mount_all /system/etc/recovery.fstab --early
+
+on post-fs
+    start boot-hal-1-2
+    start vendor.rpmbsvr
+    start vendor.sprd.hardware.trusty-service
+    start vendor.keymint-unisoc-2.0
+    start vendor.gatekeeper-1-0
+
+on property:crypto.ready=1
+    start vendor.rpmbsvr
+    start vendor.sprd.hardware.trusty-service
+    start vendor.keymint-unisoc-2.0
+    start vendor.gatekeeper-1-0
+    start keymaster-4-0
+    start gatekeeper-1-0
+
+on property:hwservicemanager.ready=true
+    start vendor.rpmbsvr
+    start vendor.sprd.hardware.trusty-service
+    start vendor.keymint-unisoc-2.0
+    start vendor.gatekeeper-1-0
+
+on property:ro.crypto.state=unsupported
+    stop vendor.rpmbsvr
+    stop vendor.sprd.hardware.trusty-service
+    stop vendor.keymint-unisoc-2.0
+    stop vendor.gatekeeper-1-0
+    stop servicemanager
+    stop hwservicemanager
+
+on property:ro.crypto.state=unencrypted
+    stop vendor.rpmbsvr
+    stop vendor.sprd.hardware.trusty-service
+    stop vendor.keymint-unisoc-2.0
+    stop vendor.gatekeeper-1-0
+    stop servicemanager
+    stop hwservicemanager
+
+on property:twrp.decrypt.done=true
+    stop vendor.rpmbsvr
+    stop vendor.sprd.hardware.trusty-service
+    stop vendor.keymint-unisoc-2.0
+    stop vendor.gatekeeper-1-0
+    stop servicemanager
+    stop hwservicemanager
+
+service vendor.rpmbsvr /vendor/bin/rpmbserver -r /dev/mmcblk0rpmb
+    user root
+    group root
+    socket rpmbserver stream 0666 system system
+    disabled
+    seclabel u:r:recovery:s0
+
+service vendor.sprd.hardware.trusty-service /vendor/bin/hw/vendor.sprd.hardware.trusty-service
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+service vendor.keymint-unisoc-2.0 /vendor/bin/hw/android.hardware.security.keymint@2.0-unisoc.service.trusty
+    user root
+    group root drmrpc
+    disabled
+    seclabel u:r:recovery:s0
+
+service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service.trusty
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+service boot-hal-1-2 /vendor/bin/hw/vendor.sprd.hardware.boot@1.2-service
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0

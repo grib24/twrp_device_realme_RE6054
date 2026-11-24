@@ -1,0 +1,6 @@
+<manifest version="1.0" type="device">
+    <hal format="aidl">
+        <name>vendor.silead.hardware.fingerprintext</name>
+        <fqname>ISileadFingerprint/default</fqname>
+    </hal>
+</manifest>
