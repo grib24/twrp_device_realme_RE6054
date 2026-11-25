@@ -15,12 +15,3 @@ PRODUCT_RELEASE_NAME := RE6054
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="ussi_arm64_full-user 16 BP2A.250605.031.A3 10 release-keys"
 BUILD_FINGERPRINT := realme/RMX3930/RE6054:16/BP2A.250605.031.A3/U.R4T2.1783691494:user/release-keys
-
-PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)/prebuilt
-
-PRODUCT_PACKAGES += \
-    android.security.apc-ndk_platform \
-    android.system.keystore2-V1-ndk_platform \
-    android.security.authorization-ndk_platform \
-    android.security.maintenance-ndk_platform \
-    android.hardware.security.keymint-V1-ndk_platform
